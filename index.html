@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Sort Visualizer</title>
+    <meta name="author" content="dss4f">
+    <meta name="description" content="Visualize sorting algorithms">
+  </head>
+
+  <body>
+    <p>
+      Size: <input id="sizeBox" type="text" size="8">
+    </p>
+    <p>
+      Max Value: <input id="maxValBox" type="text" size="8">
+    </p>
+
+    <p>
+      <button id="bubblesortButton" type="button">Bubblesort</button>
+      <button id="insertionsortButton" type="button">Insertionsort</button>
+      <button id="mergesortButton" type="button">Mergesort</button>
+      <button id="heapsortButton" type="button">Heapsort</button>
+      <button id="quicksortButton" type="button">Quicksort</button>
+    </p>
+
+    <div id="array"></div>
+
+    <p id="statusText"></p>
+  </body>
+
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+  </script>
+  <script src="common.js"></script>
+  <script src="bubblesort.js"></script>
+  <script src="insertionsort.js"></script>
+  <script src="mergesort.js"></script>
+  <script src="heapsort.js"></script>
+  <script src="quicksort.js"></script>
+  <script src="sort-visualizer.js"></script>
+</html>
