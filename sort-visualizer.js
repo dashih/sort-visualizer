@@ -33,3 +33,8 @@ $("#quicksortButton").click(() => {
     startOperation("quicksort");
     quicksort();
 });
+
+$("#radixsortLSDButton").click(() => {
+    startOperation("radixsort lsd");
+    radixsortLSD();
+});
