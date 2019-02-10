@@ -57,6 +57,6 @@ async function mergesortRange(fromInclusive, toExclusive) {
 }
 
 async function mergesort() {
-    await mergesortRange(0, $("#array").children().length);
+    await mergesortRange(0, getArrayLength());
     endOperation();
 }
