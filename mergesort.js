@@ -1,3 +1,10 @@
+const mergesort_description = `
+<h2>Mergesort</h2>
+<p>
+  Mergesort is the most pure divide-and-conquer sort. It continually divides each section exactly in half, sorts each side, then merges the results. Particularly towards the end of execution, watch how pairs of sorted halves are merged.
+</p>
+`;
+
 async function merge(fromInclusive, toExclusive, splitIdx) {
     // Copy the range from the source array to a buffer array.
     let buffer = [];
@@ -57,6 +64,7 @@ async function mergesortRange(fromInclusive, toExclusive) {
 }
 
 async function mergesort() {
+    startOperation(mergesort_description);
     await mergesortRange(0, getArrayLength());
     endOperation();
 }

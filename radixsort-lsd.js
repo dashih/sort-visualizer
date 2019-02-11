@@ -1,4 +1,13 @@
+const radixsortlsd_description = `
+<h2>Radixsort LSD</h2>
+<p>
+  Radixsort LSD repeatedly bucketizes elements starting with their least significant digits. Visually, the most interesting thing about this algorithm is that a large number can remain at the top for a long time (until the very last bucketizing operation places it in its rightful place).
+</p>
+`;
+
 async function radixsortLSD() {
+    startOperation(radixsortlsd_description);
+
     // We need to check as many places (1's place, 10's place, etc) as are in the largest number.
     let max = 0;
     for (let i = 0; i < getArrayLength(); i++) {

@@ -7,14 +7,15 @@ function asyncSleep(ms) {
 //
 // Status reporting operations
 //
-function startOperation(op) {
+function startOperation(descr) {
     $(":button").prop("disabled", true);
-    $("#statusText").text("Running " + op + "...");
+    $("#description").html(descr);
     initArray();
+    $("hr.arrayElement").css("border-color", "#F00000");
 }
 
 function endOperation() {
-    $("#statusText").text("Done.");
+    $("hr.arrayElement").css("border-color", "black");
     $(":button").prop("disabled", false);
 }
 
@@ -27,7 +28,7 @@ function initArray() {
 
     $("#array").empty();
     for (let i = 0; i < size; i++) {
-        let tmp = $("<hr style='margin: 0 0 0 0; padding: 0 0 0 0;'>");
+        let tmp = $("<hr class='arrayElement' style='margin: 0.5 0; padding: 0;'>");
         tmp.width(Math.floor((Math.random() * maxVal)));
         $("#array").append(tmp);
     }
