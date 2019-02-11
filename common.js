@@ -1,3 +1,6 @@
+var quizMode = false;
+var quizModeAnswer = "";
+
 // Returns a promise that resolves after X ms. This can be await'd to
 // freeze a function and allow the thread to do other things (like repaint).
 function asyncSleep(ms) {
@@ -5,11 +8,17 @@ function asyncSleep(ms) {
 }
 
 //
-// Status reporting operations
+// Common before/after operations.
 //
 function startOperation(descr) {
+    if (quizMode) {
+        $("#description").html("<h1>Guess which algorithm is running!</h1>");
+        quizModeAnswer = descr;
+    } else {
+        $("#description").html(descr);
+    }
+
     $(":button").prop("disabled", true);
-    $("#description").html(descr);
     initArray();
     $("hr.arrayElement").css("border-color", "#F00000");
 }
@@ -17,6 +26,11 @@ function startOperation(descr) {
 function endOperation() {
     $("hr.arrayElement").css("border-color", "black");
     $(":button").prop("disabled", false);
+
+    if (quizMode) {
+        $("#description").html(quizModeAnswer);
+        quizMode = false;
+    }
 }
 
 //
