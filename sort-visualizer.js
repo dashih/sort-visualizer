@@ -19,11 +19,12 @@ $("#mergesortButton").click(mergesort);
 $("#heapsortButton").click(heapsort);
 $("#quicksortButton").click(quicksort);
 $("#radixsortLSDButton").click(radixsortLSD);
+$("#radixsortMSDButton").click(radixsortMSD);
 
 $("#quizModeButton").click(() => {
     quizMode = true;
     let r = Math.round(Math.random() * 10000);
-    switch (r % 6) {
+    switch (r % 7) {
         case 0:
             bubblesort();
             break;
@@ -41,6 +42,9 @@ $("#quizModeButton").click(() => {
             break;
         case 5:
             radixsortLSD();
+            break;
+        case 6:
+            radixsortMSD();
             break;
         default:
             alert("oops");
