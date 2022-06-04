@@ -1,10 +1,57 @@
 'use strict';
 
-const maxValue = 10000;
+const minArraySize = 32;
+const defArraySize = 128;
+const maxArraySize = 512;
 
 var chart = undefined;
-var size = undefined;
 var algorithmFunction = undefined;
+var width = undefined;
+
+function createChart(size) {
+    if (chart !== undefined) {
+        chart.destroy();
+        chart = undefined;
+    }
+
+    document.getElementById('chart').width = Math.round(window.innerWidth * 0.8);
+    document.getElementById('chart').height = Math.round(window.innerHeight * 0.5);
+
+    const maxValue = Math.round(size * 5);
+    let labels = [];
+    let data = [];
+    for (let i = 0; i < size; i++) {
+        const r = Math.floor(Math.random() * maxValue);
+        data[i] = r;
+        labels[i] = '';
+    }
+
+    chart = new Chart(document.getElementById('chart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    data: data,
+                    backgroundColor: ["#8B0000"]
+                }
+            ]
+        },
+        options: {
+            responsive: false,
+            indexAxis: 'y',
+            scales: {
+                x: { display: false },
+                y: { display: false }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false }
+            },
+            animation: false
+        }
+    });
+}
 
 document.getElementById('algorithmSelector').onchange = () => {
     document.getElementById('descriptionDiv').style.display = 'block';
@@ -45,54 +92,35 @@ document.getElementById('algorithmSelector').onchange = () => {
     }
 };
 
-document.getElementById('runButton').onclick = () => {
+document.getElementById('selectButton').onclick = () => {
     document.getElementById('algorithmSelector').disabled = true;
     document.getElementById('descriptionDiv').style.display = 'none';
     document.getElementById('chartDiv').style.display = 'block';
 
-    if (window.innerHeight <= window.innerWidth) {
-        // Landscape
-        size = Math.round(window.innerHeight * 0.1);
-        document.getElementById('chart').height = size * 4;
-    } else {
-        // Portrait
-        size = Math.round(window.innerHeight * 0.1);
-        document.getElementById('chart').height = size * 10;
-    }
+    // Allow configuring array size.
+    const sizeRange = document.getElementById('sizeRange');
+    sizeRange.min = minArraySize;
+    sizeRange.max = maxArraySize;
+    sizeRange.value = defArraySize;
+    document.getElementById('sizeRangeLabel').innerText = `Array size: ${sizeRange.value}`;
 
-    let labels = [];
-    let data = [];
-    for (let i = 0; i < size; i++) {
-        const r = Math.floor(Math.random() * maxValue);
-        data[i] = r;
-        labels[i] = '';
-    }
-    
-    chart = new Chart(document.getElementById('chart'), {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    data: data,
-                    backgroundColor: ["#8B0000"]
-                }
-            ]
-        },
-        options: {
-            indexAxis: 'y',
-            scales: {
-                x: { display: false },
-                y: { display: false }
-            },
-            plugins: {
-                legend: { display: false },
-                tooltip: { enabled: false }
-            },
-            animation: false
-        }
-    });
+    createChart(sizeRange.value);
+};
 
+document.getElementById('sizeRange').oninput = () => {
+    const size = Math.round(document.getElementById('sizeRange').value);
+    document.getElementById('sizeRangeLabel').innerText = `Array size: ${size}`;
+};
+
+document.getElementById('sizeRange').onchange = () => {
+    const size = Math.round(document.getElementById('sizeRange').value);
+    document.getElementById('sizeRangeLabel').innerText = `Array size: ${size}`;
+    createChart(size);
+};
+
+document.getElementById('runButton').onclick = () => {
+    document.getElementById('runButton').disabled = true;
+    document.getElementById('sizeRange').disabled = true;
     algorithmFunction();
 };
 
