@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="An application that visualizes sorting algorithms">
 
+  <link rel="stylesheet" href="index.css">
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -21,14 +23,14 @@
     <div class="row mt-3 g-0">
       <div class="col-md-auto mx-auto">
         <h1>Sort Visualizer</h1>
-        <div id="versions" class="version font-monospace" style="font-size: small">
-          v2.3
+        <div id="versions" class="version font-monospace">
+          v2.4
           <br />
           Bootstrap 5.0.2
           <br />
           Chart.js 3.8.0
         </div>
-        <hr class="mx-auto" style="width: 25%" />
+        <hr class="mx-auto" />
       </div>
     </div>
 
@@ -62,7 +64,7 @@
     <!-- Chart -->
     <div id="chartDiv" class="row g-0 my-3">
       <div class="col-md-auto mx-auto">
-        <canvas id="chart" width="800" height="400"></canvas>
+        <canvas id="chart" width="800"></canvas>
       </div>
     </div>
 
