@@ -13,8 +13,8 @@ const quicksort_description = `
 `;
 
 async function partition(fromInclusive, toExclusive) {
-    pivotValue = getArrayValue(toExclusive - 1);
-    pivotIndex = fromInclusive;
+    const pivotValue = getArrayValue(toExclusive - 1);
+    let pivotIndex = fromInclusive;
     for (let i = fromInclusive; i < toExclusive; i++) {
         if (pivotValue > getArrayValue(i)) {
             let tmp = getArrayValue(i);

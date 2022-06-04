@@ -50,8 +50,15 @@ document.getElementById('runButton').onclick = () => {
     document.getElementById('descriptionDiv').style.display = 'none';
     document.getElementById('chartDiv').style.display = 'block';
 
-    size = Math.round(window.innerHeight * 0.1);
-    document.getElementById('chart').height = size * 4;
+    if (window.innerHeight <= window.innerWidth) {
+        // Landscape
+        size = Math.round(window.innerHeight * 0.1);
+        document.getElementById('chart').height = size * 4;
+    } else {
+        // Portrait
+        size = Math.round(window.innerHeight * 0.1);
+        document.getElementById('chart').height = size * 10;
+    }
 
     let labels = [];
     let data = [];
