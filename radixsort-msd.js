@@ -1,7 +1,11 @@
+'use strict';
+
 const radixsortmsd_description = `
-<h2>Radixsort MSD</h2>
 <p>
-  Radixsort MSD bucketizes elements starting with their most significant digits, then recursively bucketizes each bucket by the next most significant digits. The early iterations do a lot of work, since the algorithm first considers the digits that have the most impact on an element's rank. Visually, the algorithm appears to start strong - <i>nearly</i> sorting everything - then proceeds to touch up the details.
+    Radixsort MSD bucketizes elements starting with their most significant digits, then recursively bucketizes each bucket by the next most significant digits.
+</p>
+<p>
+    Visually, the algorithm starts strong. The early iterations do a lot of work, because the algorithm first considers the digits that have the most impact on an element's rank. Later iterations are just touching up the details.
 </p>
 `;
 
@@ -45,8 +49,6 @@ function sortBucket(bucket, place, termination) {
 }
 
 async function radixsortMSD() {
-    startOperation(radixsortmsd_description);
-
     let array = [];
     for (let i = 0; i < getArrayLength(); i++) {
         array.push(getArrayValue(i));
@@ -61,9 +63,9 @@ async function radixsortMSD() {
         sortBucket(array, places, t);
         for (let i = 0; i < getArrayLength(); i++) {
             setArrayValue(i, array[i]);
-            await asyncSleep(10);
+            await update();
         }
     }
 
-    endOperation();
+    finish();
 }

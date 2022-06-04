@@ -1,7 +1,11 @@
+'use strict';
+
 const mergesort_description = `
-<h2>Mergesort</h2>
 <p>
-  Mergesort is the most pure divide-and-conquer sort. It continually divides each section exactly in half, sorts each side, then merges the results. Particularly towards the end of execution, watch how pairs of sorted halves are merged.
+    Mergesort is the most pure divide-and-conquer sort. It continually divides each section exactly in half, sorts each side, then merges the results.
+</p>
+<p>
+    Watch how pairs of sorted halves are merged, particularly towards the end of execution.
 </p>
 `;
 
@@ -32,7 +36,7 @@ async function merge(fromInclusive, toExclusive, splitIdx) {
             rightIdx++;
         }
 
-        await asyncSleep(10);
+        await update();
     }
 
     // If the left still has numbers, write them to the source array.
@@ -40,7 +44,7 @@ async function merge(fromInclusive, toExclusive, splitIdx) {
     if (leftIdx < splitIdx - fromInclusive) {
         for (; leftIdx < splitIdx - fromInclusive; srcIdx++, leftIdx++) {
             setArrayValue(srcIdx, buffer[leftIdx]);
-            await asyncSleep(10);
+            await update();
         }
     }
 
@@ -49,7 +53,7 @@ async function merge(fromInclusive, toExclusive, splitIdx) {
     if (rightIdx < toExclusive - fromInclusive) {
         for (; rightIdx < toExclusive - fromInclusive; srcIdx++, rightIdx++) {
             setArrayValue(srcIdx, buffer[rightIdx]);
-            await asyncSleep(10);
+            await update();
         }
     }
 }
@@ -64,7 +68,6 @@ async function mergesortRange(fromInclusive, toExclusive) {
 }
 
 async function mergesort() {
-    startOperation(mergesort_description);
     await mergesortRange(0, getArrayLength());
-    endOperation();
+    finish();
 }
