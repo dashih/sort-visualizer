@@ -6,7 +6,6 @@ const maxArraySize = 512;
 
 var chart = undefined;
 var algorithmFunction = undefined;
-var width = undefined;
 
 function createChart(size) {
     if (chart !== undefined) {
@@ -128,9 +127,9 @@ document.getElementById('runButton').onclick = async () => {
     document.getElementById('runButton').disabled = true;
     document.getElementById('sizeRange').disabled = true;
 
-    chart.data.datasets[0].backgroundColor.fill('#8B0000');
+    chart.data.datasets[0].backgroundColor.fill('#8B0000'); // dark red
     await algorithmFunction();
-    chart.data.datasets[0].backgroundColor.fill('#191970');
+    chart.data.datasets[0].backgroundColor.fill('#191970'); // dark blue
     chart.update();
 };
 
