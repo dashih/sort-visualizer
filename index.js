@@ -87,6 +87,10 @@ document.getElementById('algorithmSelector').onchange = () => {
             document.getElementById('description').innerHTML = radixsortmsd_description;
             algorithmFunction = radixsortMSD;
             break;
+        case 'countingsort':
+            document.getElementById('description').innerHTML = countingsort_description;
+            algorithmFunction = countingsort;
+            break;
         default:
             document.getElementById('descriptionDiv').style.display = 'none';
     }
