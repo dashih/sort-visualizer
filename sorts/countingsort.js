@@ -20,6 +20,10 @@ async function countingsort() {
 
     let idx = 0;
     for (let k = 0; k < counts.length; k++) {
+        if (idx === getArrayLength()) {
+            break;
+        }
+
         for (let i = 0; i < counts[k]; i++) {
             setArrayValue(idx, k);
             idx++;
@@ -27,4 +31,6 @@ async function countingsort() {
 
         await update();
     }
+
+    finish();
 }

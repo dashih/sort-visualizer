@@ -122,10 +122,10 @@ document.getElementById('sizeRange').onchange = () => {
     createChart(size);
 };
 
-document.getElementById('runButton').onclick = () => {
+document.getElementById('runButton').onclick = async () => {
     document.getElementById('runButton').disabled = true;
     document.getElementById('sizeRange').disabled = true;
-    algorithmFunction();
+    await algorithmFunction();
 };
 
 window.onload = () => {
