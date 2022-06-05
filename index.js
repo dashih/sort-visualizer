@@ -109,6 +109,12 @@ document.getElementById('selectButton').onclick = () => {
     sizeRange.value = defArraySize;
     document.getElementById('sizeRangeLabel').innerText = `Array size: ${sizeRange.value}`;
 
+    sizeRange.style.width = '25%';
+    if (window.innerHeight > window.innerWidth) {
+        // In portrait, we want a wider slider.
+        sizeRange.style.width = '75%';
+    }
+
     createChart(sizeRange.value);
 };
 
