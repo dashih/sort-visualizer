@@ -43,5 +43,4 @@ async function quicksortRange(fromInclusive, toExclusive) {
 
 async function quicksort() {
     await quicksortRange(0, getArrayLength());
-    finish();
 }

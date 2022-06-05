@@ -31,6 +31,4 @@ async function countingsort() {
 
         await update();
     }
-
-    finish();
 }

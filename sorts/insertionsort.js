@@ -20,6 +20,4 @@ async function insertionsort() {
 
         setArrayValue(j + 1, curVal);
     }
-
-    finish();
 }

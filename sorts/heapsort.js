@@ -46,6 +46,4 @@ async function heapsort() {
 
         await bubbledown(0, i);
     }
-
-    finish();
 }

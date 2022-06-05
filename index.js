@@ -20,10 +20,12 @@ function createChart(size) {
     const maxValue = Math.round(size * 5);
     let labels = [];
     let data = [];
+    let bgColors = [];
     for (let i = 0; i < size; i++) {
         const r = Math.floor(Math.random() * maxValue);
         data[i] = r;
         labels[i] = '';
+        bgColors[i] = 'black';
     }
 
     chart = new Chart(document.getElementById('chart'), {
@@ -33,7 +35,7 @@ function createChart(size) {
             datasets: [
                 {
                     data: data,
-                    backgroundColor: ["#8B0000"]
+                    backgroundColor: bgColors
                 }
             ]
         },
@@ -125,7 +127,11 @@ document.getElementById('sizeRange').onchange = () => {
 document.getElementById('runButton').onclick = async () => {
     document.getElementById('runButton').disabled = true;
     document.getElementById('sizeRange').disabled = true;
+
+    chart.data.datasets[0].backgroundColor.fill('#8B0000');
     await algorithmFunction();
+    chart.data.datasets[0].backgroundColor.fill('#191970');
+    chart.update();
 };
 
 window.onload = () => {

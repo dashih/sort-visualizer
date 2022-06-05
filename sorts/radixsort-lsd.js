@@ -52,6 +52,4 @@ async function radixsortLSD() {
             }
         }
     }
-
-    finish();
 }

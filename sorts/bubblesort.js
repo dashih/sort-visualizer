@@ -28,6 +28,4 @@ async function bubblesort() {
             break;
         }
     }
-
-    finish();
 }

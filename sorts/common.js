@@ -10,15 +10,11 @@ function getArrayValue(idx) {
 
 function setArrayValue(idx, val) {
     chart.data.datasets[0].data[idx] = val;
-    chart.update();
+    chart.data.datasets[0].backgroundColor[idx] = '#AAFF00';
 }
 
 async function update() {
     chart.update();
-    await new Promise(r => setTimeout(r, 3));
-}
-
-function finish() {
-    chart.data.datasets[0].backgroundColor = 'black';
-    chart.update();
+    await new Promise(r => setTimeout(r, 5));
+    chart.data.datasets[0].backgroundColor.fill('#8B0000');
 }

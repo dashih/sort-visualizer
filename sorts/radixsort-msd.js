@@ -66,6 +66,4 @@ async function radixsortMSD() {
             await update();
         }
     }
-
-    finish();
 }
